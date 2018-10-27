@@ -2,25 +2,59 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="./styles.css"  />
+    <link rel="stylesheet" type="text/css" href="./chat.css"  />
 </head>
 
 <body>
-
-<!--topbar-->
-<div class="top-bar">
-    <div class="top-bar-title">Children with Cancer Journey</div>
+<!--top bar-->
+<div class="menu">
+    <div class="back"><i class="fa fa-chevron-left"></i> <img src="https://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+    <div class="name">Group Name</div>
+    <div class="last">5 members</div>
 </div>
 
-<!--chatbox-->
-<div class="chat-box">
-    <div class="chat-container">
-        <img src="https://www.w3schools.com/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
-        <p>Hello. How are you today?</p>
-        <span class="chat-time-right">11:00</span>
-    </div>
-</div>
-
+<ol class="chat">
+    <li class="other">
+        <div class="avatar"><img src="https://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+            <p>Hola!</p>
+            <p>Te vienes a cenar al centro? <emoji class="pizza"/></p>
+            <time>20:17</time>
+        </div>
+    </li>
+    <li class="self">
+        <div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+            <p>El que mandó Marialu</p>
+            <p>Es para mañana...</p>
+            <time>20:18</time>
+        </div>
+    </li>
+    <li class="other">
+        <div class="avatar"><img src="https://i.imgur.com/DY6gND0.png" draggable="false"/></div>
+        <div class="msg">
+            <p><emoji class="scream"/></p>
+            <p>Pásamelo! <emoji class="please"/></p>
+            <time>20:18</time>
+        </div>
+    </li>
+    <li class="self">
+        <div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+            <img src="https://i.imgur.com/QAROObc.jpg" draggable="false"/>
+            <time>20:19</time>
+        </div>
+    </li>
+    <li class="self">
+        <div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div>
+        <div class="msg">
+            <p>Hey there's a new update about this chat UI with more responsive elements! Check it now:</p>
+            <p><a href="https://codepen.io/Varo/pen/YPmwpQ" target="parent">Chat UI 2.0</a></p>
+            <time>18:09</time>
+        </div>
+    </li>
+</ol>
+<input class="textarea" type="text" placeholder="Type here!"/><div class="emojis"></div>
 
 <div class="chat-send-box">
     <a class="active">Send</a>
