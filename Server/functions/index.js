@@ -72,4 +72,27 @@ app.post('/setstar', (req,res) => {
     res.status(200).json({"result":"Successful"});
 })
 
+app.post('/getstar', (req,res) => {
+    var name = String(req.body.name);
+    var db = admin.database();
+    var starsref = db.ref().child('Stars').child(name)
+
+    var result = {}
+
+    starsref.once('value').then(function(snapshot) {
+        if(snapshot != undefined)
+        {
+            snapshot.forEach(function (childSnapshot) {
+                var user = {}
+                user["id"] = childSnapshot.val().id;
+                user["name"] = childSnapshot.val().name;
+                user["number"] = childSnapshot.val().number;
+                result[user["id"]] = user;
+            })
+        }
+    }).then(function(){
+        res.status(200).json(result);
+    })
+})
+
 exports.api = functions.https.onRequest(app);
