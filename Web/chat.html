@@ -3,6 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./chat.css"  />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type='text/javascript' src='scripts/chat.js'></script>
 </head>
 
 <body>
@@ -54,13 +56,6 @@
         </div>
     </li>
 </ol>
-<input class="textarea" type="text" placeholder="Type here!"/><div class="emojis"></div>
-
-<div class="chat-send-box">
-    <a class="active">Send</a>
-    <div class="sent-text-box">
-        <input type="text" placeholder="write your message">
-    </div>
-</div>
+<input id="message-input" class="textarea" type="text" placeholder="Type here!"/><div class="emojis"></div>
 </body>
 </html>
