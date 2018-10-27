@@ -230,4 +230,3 @@ fabric.properties
 
 # Fore Firebase Function
 ./Server/functions/node_modules
-./

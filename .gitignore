@@ -1,0 +1,11 @@
+
+Server/\.idea/
+
+Server/functions/node_modules/
+
+
+*.xml
+
+Server/\.firebaserc
+
+Server/firebase\.json
