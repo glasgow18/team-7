@@ -3,10 +3,6 @@ body {
     text-align: center;
 }
 
-/*div{*/
-    /*border: solid black 1px;*/
-/*}*/
-
 .top-bar {
     list-style-type: none;
     margin: 0;
@@ -34,8 +30,8 @@ body {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
     border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 3px;
+    margin: 10px 0; /*space between textx*/
 }
 
 .chat-darker {
@@ -51,7 +47,7 @@ body {
 
 .chat-container img {
     float: left;
-    max-width: 60px;
+    max-width: 40px;
     width: 100%;
     margin-right: 20px;
     border-radius: 50%;
@@ -76,11 +72,11 @@ body {
 
 .menu-button-container .btn {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    background-color: #555;
+    background-color: rgba(85,85,85,0.75);
     color: white;
     font-size: 16px;
     padding: 12px 24px;
@@ -94,6 +90,9 @@ body {
     background-color: black;
 }
 
+.menu-button-text {
+    //todo
+}
 /*grid*/
 .menu-grid-container {
     /*margin: auto;*/
@@ -119,7 +118,7 @@ body {
     /*display: block;*/
     margin-left: auto;
     margin-right: auto;
-    /*background-color: #444;*/
+    background-color: #444;
     /*background-repeat: repeat;*/
     color: #fff;
     border-radius: 5px;
@@ -153,3 +152,57 @@ body {
     width: auto;
 }
 
+/*chat floating send box*/
+/* Place the navbar at the bottom of the page, and make it stick */
+.chat-send-box {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Style the links inside the navigation bar */
+.chat-send-box a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.chat-send-box a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.chat-send-box a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/*send text input field*/
+.sent-text-box {
+    /*border: 1px green solid;*/
+    margin-left: 15px;
+    /*margin-top: 3px;*/
+    margin-bottom: 5px;
+    position:relative;
+}
+
+.sent-text-box input {
+    background-color: transparent;
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:1170px;
+    border:none;
+    border-bottom:1px solid #757575;
+    color: white;
+}
+
+.sent-text-box input:focus 		{ outline:none; }
