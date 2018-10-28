@@ -393,6 +393,20 @@ body {
     margin-left: 3px;
 }
 
+.treatment-box {
+    background-color: sandybrown;
+    font-size: 10px;
+    text-align: center;
+    padding: 10px;
+    width: 60px;
+    height: 10px;
+    border-radius: 5px;
+    color: white;
+    line-height: 10px;
+    float: right;
+    margin-left: 3px;
+}
+
 
 
 .profile-box {
