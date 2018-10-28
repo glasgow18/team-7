@@ -30,6 +30,7 @@ function sendMessage(sender, sendto, message) {
 }
 
 function fetch(){
+    // return;
     console.log("let me sleeppppp");
     //todo fetch messages from server
     localStorage.setItem("currentRoom","1234A");
