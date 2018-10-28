@@ -392,3 +392,78 @@ body {
     float: right;
     margin-left: 3px;
 }
+
+
+
+.profile-box {
+    background-color: #f9f9f9;
+    text-align: left;
+    /*margin: 0 60px;*/
+    margin: 0 250px 60px 250px;
+    padding: 0;
+}
+
+.profile-box ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-box ul li h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0; padding: 0;
+}
+
+.profile-box ul li img {
+    float: left;
+    margin: 0 15px 0 0;
+    padding: 0;
+}
+
+.profile-box ul li p {
+    font: 200 18px/1.5 Georgia, Times New Roman, serif;
+    margin: 0; padding: 0;
+}
+
+.profile-box ul li {
+    padding: 10px;
+    overflow: auto;
+    margin: 0;
+}
+
+.profile-box ul li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+
+.profile-box-img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.profile-img {
+    width: 150px;
+    margin-top: 50px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.profile-tag-box {
+    text-align: center;
+    color:red;
+    margin: 0 0 0 0;
+}
+.profile-tag {
+    font-size: 20px;
+    display: inline;
+    float:none;
+}
+/*div {*/
+    /*border: solid red 1px;*/
+/*}*/
