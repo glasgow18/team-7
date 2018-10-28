@@ -1,7 +1,11 @@
 var selfChatString = '<li class="self"><div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div><div class="msg"><p>191919</p><time>a few secs ago</time></div></li>'
+var otherChatString = '<li class="other"><div class="avatar"><img src="https://i.imgur.com/DY6gND0.png" draggable="false"/></div><div class="msg"><p>191919</p><time>a few secs ago</time></div></li>'
 
-function chatInsert(message) {
-    return selfChatString.replace('191919',message).replace(':o','<emoji class="scream"/>');
+function chatInsert(message, mySelf) {
+    if(mySelf === true)
+        return selfChatString.replace('191919',message).replace(':o','<emoji class="scream"/>');
+    else
+        return otherChatString.replace('191919',message).replace(':o','<emoji class="scream"/>');
 }
 
 function sendMessage(sender, sendto, message) {
@@ -42,6 +46,9 @@ function fetch(){
         success: function(data) {
             //todo set the room title with data.roomname
             console.log(data);
+
+            if(data.roomname !== null)
+                $('#chat-title').text(data.roomname);
             // return;
             if(data.texts === null)
                 return;
@@ -55,7 +62,8 @@ function fetch(){
                 var text = data.texts[i];
                 // if($.isEmptyObject( text ))
                 //     continue;
-                var newElement = $.parseHTML(chatInsert(text.message));
+                var self = text.sender == localStorage.getItem("user");
+                var newElement = $.parseHTML(chatInsert(text.message, self));
                 $('.chat').append(newElement);
             }
         },
@@ -76,18 +84,17 @@ $(document).ready(function(){
 
             console.log(text);
 
-            newText = $.parseHTML(chatInsert(text));
+            newText = $.parseHTML(chatInsert(text, true));
 
             $(".chat").append(newText);
             $(document).scrollTop($(document).height());
-            sendMessage('Doflamingo',localStorage.getItem('currentRoom'),text);
+            sendMessage(localStorage.getItem('user') ,localStorage.getItem('currentRoom'),text);
         }
     });
 
     $('.back').click(function(){
         window.history.back();
     });
-
 
     fetch();
     window.setInterval(fetch, 10000);

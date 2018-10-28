@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    var ids = ['#group-1', '#group-2', '#person-1', '#person-2', '#person-3'];
-    var rooms = ['1234A', '1234A', '1234A', '1234A', '1234A'];
+    var ids = ['#group-1', '#group-2', '#person-1', '#person-2', '#person-3', '#person-4'];
+    var rooms = ['1234A', '1234A', '1234A', '1234A', '1234A', '1234A'];
 
     $(ids[0]).click(function(){
         localStorage.setItem("currentRoom", rooms[0]);
@@ -24,6 +24,11 @@ $(document).ready(function(){
 
     $(ids[4]).click(function(){
         localStorage.setItem("currentRoom", rooms[4]);
+        window.location.href = "chat.html";
+    });
+
+    $(ids[5]).click(function(){
+        localStorage.setItem("currentRoom", rooms[5]);
         window.location.href = "chat.html";
     });
 });
