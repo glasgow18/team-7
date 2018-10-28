@@ -1,3 +1,8 @@
+var selfChatString = '<li class="self"><div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div><div class="msg"><p>191919</p><time>20:18</time></div></li>'
+function chatInsert(message) {
+    return selfChatString.replace('191919',message).replace(':o','<emoji class="scream"/>');
+}
+
 $(document).ready(function(){
     $(document).keypress(function(e) {
         if(e.which == 13) {
@@ -9,22 +14,31 @@ $(document).ready(function(){
 
             console.log(text);
 
-            newText = $.parseHTML('<li class="self"><div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div><div class="msg"><p>191919</p><time>20:18</time></div></li>'.replace('191919',text).replace(':o','<emoji class="scream"/>'));
+            newText = $.parseHTML(chatInsert(text));
 
             $(".chat").append(newText);
             $(document).scrollTop($(document).height());
 
-            //todo send text to server by room id
-            return;
-            $(document).ready(function() {
+            var postUrl = 'https://us-central1-code4good-kidswithcancer.cloudfunctions.net/api/texttogroup/';
+            var trackingJSON = '{ "sender": "'+'Doflamingo'+'”, “sendto": "'+localStorage.getItem("currentRoom")+'”, “message": "'+text+'"}';
+
+            // var trackingJSON = '{ "sender": "Doflamingo”, “sendto": "BoyScount”, “message": "Did you know that GEICO can save you 15% or more on your car insurance?"}';
+            // var trackingJSON = '{"roomid": "'+ localStorage.getItem("currentRoom").toString() +'"}';
+            // var postUrl =  "https://us-central1-code4good-kidswithcancer.cloudfunctions.net/api/gettextfromgroup/";
+
             $.ajax({
-                url: "guy's url"
-            }).then(function(data) {
-                //successful then what todo
-                $('.greeting-id').append(data.id);
-                $('.greeting-content').append(data.content);
+                type: "POST",
+                url: postUrl,
+                contentType: "application/json",
+                data: trackingJSON,
+                beforeSend: function() { return; },
+                complete: function() { return; },
+                success: function(data) {
+                },
+
+                error: function(data) { console.log("error: 39381") },
+                dataType: 'json'
             });
-        });
         }
     });
 
@@ -35,22 +49,39 @@ $(document).ready(function(){
     window.setInterval(function(){
         console.log("let me sleeppppp");
         //todo fetch messages from server
-        return;
-        var trackingJSON = '{mockup data}';
-        var postUrl =  "guy's url";
+        localStorage.setItem("currentRoom","1234A");
+        var trackingJSON = '{"roomid": "'+ localStorage.getItem("currentRoom").toString() +'"}';
+        var postUrl =  "https://us-central1-code4good-kidswithcancer.cloudfunctions.net/api/gettextfromgroup/";
 
         $.ajax({
             type: "POST",
             url: postUrl,
             contentType: "application/json",
             data: trackingJSON,
-            beforeSend: function() { $.mobile.showPageLoadingMsg("b", "Loading...", true) },
-            complete: function() { $.mobile.hidePageLoadingMsg() },
-            success: function(data) { /*todo update chat page*/ },
+            beforeSend: function() { return; },
+            complete: function() { return; },
+            success: function(data) {
+                //todo set the room title with data.roomname
+                console.log(data);
+                // return;
+                if(data.texts === null)
+                    return;
+
+                $('.chat').empty();
+                for(var i = 0 ; i < data.texts.length ; i++)
+                {
+                    var text = data.texts[i];
+                    if($.isEmptyObject( text ))
+                        continue;
+                    var newElement = $.parseHTML(chatInsert(text.message));
+                    $('.chat').append(newElement);
+                }
+            },
+
             error: function(data) { console.log("error: 39381") },
             dataType: 'json'
         });
-    }, 500);
+    }, 5000);
 });
 
 

@@ -1,6 +1,7 @@
 body {
     margin: 0;
     text-align: center;
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
 }
 
 .top-bar {
@@ -251,4 +252,33 @@ body {
 .message-list ul li:hover {
     background: #eee;
     cursor: pointer;
+}
+
+/* Create two equal columns that floats next to each other */
+.message-list-column {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    /*background-color: grey;*/
+}
+
+/* Clear floats after the columns */
+.message-list-row:after {
+    box-sizing: border-box;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.message-list-img {
+    width: 100px;
+}
+
+.message-list-subtitle {
+    font: 200 15px/1.5 Georgia, Times New Roman, serif;
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 0;
 }
