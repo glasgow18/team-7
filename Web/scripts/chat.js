@@ -47,7 +47,7 @@ $(document).ready(function(){
         window.history.back();
     });
 
-    window.setInterval(function(){
+    function fetch(){
         console.log("let me sleeppppp");
         //todo fetch messages from server
         localStorage.setItem("currentRoom","1234A");
@@ -85,7 +85,9 @@ $(document).ready(function(){
             error: function(data) { console.log("error: 39381") },
             dataType: 'json'
         });
-    }, 3000);
+    }
+    fetch();
+    window.setInterval(fetch, 3000);
 });
 
 
