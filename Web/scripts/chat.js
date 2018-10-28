@@ -2,6 +2,7 @@ $(document).ready(function(){
     $(document).keypress(function(e) {
         if(e.which == 13) {
             text = $("#message-input").val();
+            $("#message-input").val('');
 
             if(text === '')
                 return;
@@ -14,6 +15,7 @@ $(document).ready(function(){
             $(document).scrollTop($(document).height());
 
             //todo send text to server by room id
+            return;
             $(document).ready(function() {
             $.ajax({
                 url: "guy's url"
@@ -26,9 +28,14 @@ $(document).ready(function(){
         }
     });
 
+    $('.back').click(function(){
+        window.history.back();
+    });
+
     window.setInterval(function(){
         console.log("let me sleeppppp");
         //todo fetch messages from server
+        return;
         var trackingJSON = '{mockup data}';
         var postUrl =  "guy's url";
 
