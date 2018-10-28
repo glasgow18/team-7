@@ -1,0 +1,483 @@
+body {
+    margin: 0;
+    text-align: center;
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+.top-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    height: 60px;
+}
+
+.top-bar-title {
+    color: white;
+    text-align: left;
+    margin: 20px;
+    font-size: 20px;
+}
+
+/*chatting*/
+.chat-box {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.chat-container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 10px 0; /*space between textx*/
+}
+
+.chat-darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+.chat-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.chat-container img {
+    float: left;
+    max-width: 40px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.chat-text-content {
+    /*border: black 1px solid;*/
+    line-height: 40px;
+    text-align: center;
+}
+
+.chat-time-right {
+    float: right;
+    color: #aaa;
+}
+
+/*menu button*/
+.menu-button-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.menu-button-container img {
+    width: 100%;
+    height: auto;
+}
+
+.menu-button-container .btn {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgba(85,85,85,0.75);
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.menu-button-container .btn:hover {
+    background-color: black;
+}
+
+.menu-button-text {
+    //todo
+}
+/*grid*/
+.menu-grid-container {
+    /*margin: auto;*/
+    width: 620px;
+    /*display: block;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: auto;*/
+    margin-top: 40px;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+}
+
+.menu-grid-wrapper{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 200px 200px 200px;
+    background-color: #fff;
+    color: #444;
+}
+
+.menu-grid-box {
+    /*display: block;*/
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #444;
+    /*background-repeat: repeat;*/
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.grid-a {
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+.grid-b {
+    grid-column: 3 ;
+    grid-row: 1 / 3;
+}
+.grid-c {
+    grid-column: 1 ;
+    grid-row: 2 ;
+}
+.grid-d {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.fillwidth {
+    min-width: 100%;
+    height: auto;
+}
+
+.fillheight {
+    min-height: 100%;
+    width: auto;
+}
+
+/*chat floating send box*/
+/* Place the navbar at the bottom of the page, and make it stick */
+.chat-send-box {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Style the links inside the navigation bar */
+.chat-send-box a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/*!* Change the color of links on hover *!*/
+.chat-send-box a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/*!* Add a color to the active/current link *!*/
+.chat-send-box a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/*!*send text input field*!*/
+.sent-text-box {
+    /*border: 1px green solid;*/
+    margin-left: 15px;
+    /*margin-top: 3px;*/
+    margin-bottom: 5px;
+    position:relative;
+}
+
+.sent-text-box input {
+    background-color: transparent;
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:1170px;
+    border:none;
+    border-bottom:1px solid #757575;
+    color: white;
+}
+
+.sent-text-box input:focus 		{ outline:none; }
+
+/*messages list*/
+.message-list {
+    text-align: left;
+    margin: 20px; padding: 0;
+}
+
+.message-list ul {
+    list-style-type: none;
+    width: 500px;
+    margin: 0;
+    padding: 0;
+}
+
+.message-list ul li h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0; padding: 0;
+}
+
+.message-list ul li img {
+    float: left;
+    margin: 0 15px 0 0;
+    padding: 0;
+}
+
+.message-list ul li p {
+    font: 200 15px/1.5 Georgia, Times New Roman, serif;
+    margin: 0; padding: 0;
+}
+
+.message-list ul li {
+    padding: 10px;
+    overflow: auto;
+    margin: 0;
+}
+
+.message-list ul li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+/* Create two equal columns that floats next to each other */
+.message-list-column {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    /*background-color: grey;*/
+}
+
+/* Clear floats after the columns */
+.message-list-row:after {
+    box-sizing: border-box;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.message-list-img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.message-list-subtitle {
+    font: 200 15px/1.5 Georgia, Times New Roman, serif;
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+.search-form input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.search-form button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #45a049;
+}
+
+.search-form-container {
+    margin: 50px 300px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/*messages list*/
+.search-result-list {
+    background-color: #f9f9f9;
+    text-align: left;
+    /*margin: 0 60px;*/
+    margin: 0 250px 60px 250px;
+    padding: 0;
+}
+
+.search-result-list ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.search-result-list ul li h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0; padding: 0;
+}
+
+.search-result-list ul li img {
+    float: left;
+    margin: 0 15px 0 0;
+    padding: 0;
+}
+
+.search-result-list ul li p {
+    font: 200 18px/1.5 Georgia, Times New Roman, serif;
+    margin: 0; padding: 0;
+}
+
+.search-result-list ul li {
+    padding: 10px;
+    overflow: auto;
+    margin: 0;
+}
+
+.search-result-list ul li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+
+.search-result-list-img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.tag-box {
+    background-color: forestgreen;
+    font-size: 10px;
+    text-align: center;
+    padding: 10px;
+    width: 40px;
+    height: 10px;
+    border-radius: 5px;
+    color: white;
+    line-height: 10px;
+    float: right;
+    margin-left: 3px;
+}
+
+.location-box {
+    background-color: dodgerblue;
+    font-size: 10px;
+    text-align: center;
+    padding: 10px;
+    width: 40px;
+    height: 10px;
+    border-radius: 5px;
+    color: white;
+    line-height: 10px;
+    float: right;
+    margin-left: 3px;
+}
+
+.treatment-box {
+    background-color: sandybrown;
+    font-size: 10px;
+    text-align: center;
+    padding: 10px;
+    width: 60px;
+    height: 10px;
+    border-radius: 5px;
+    color: white;
+    line-height: 10px;
+    float: right;
+    margin-left: 3px;
+}
+
+
+
+.profile-box {
+    background-color: #f9f9f9;
+    text-align: left;
+    /*margin: 0 60px;*/
+    margin: 0 250px 60px 250px;
+    padding: 0;
+}
+
+.profile-box ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-box ul li h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+    margin: 0; padding: 0;
+}
+
+.profile-box ul li img {
+    float: left;
+    margin: 0 15px 0 0;
+    padding: 0;
+}
+
+.profile-box ul li p {
+    font: 200 18px/1.5 Georgia, Times New Roman, serif;
+    margin: 0; padding: 0;
+}
+
+.profile-box ul li {
+    padding: 10px;
+    overflow: auto;
+    margin: 0;
+}
+
+.profile-box ul li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+
+.profile-box-img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.profile-img {
+    width: 150px;
+    margin-top: 50px;
+    border-radius: 50%;
+}
+
+.profile-name {
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.profile-tag-box {
+    text-align: center;
+    color:red;
+    margin: 0 0 0 0;
+}
+.profile-tag {
+    font-size: 20px;
+    display: inline;
+    float:none;
+}
+/*div {*/
+    /*border: solid red 1px;*/
+/*}*/

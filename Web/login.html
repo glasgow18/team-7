@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./login.css"  />
+    <title>Login</title>
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <div class="register-form">
+            <input type="text" id='un1' placeholder="username"/>
+            <input type="password" placeholder="password"/>
+            <input type="text" placeholder="verification code"/>
+            <button>create</button>
+            <p class="message">Already registered? <span>Sign In</span></p>
+        </div>
+        <div class="login-form">
+            <input type="text" id='un2' placeholder="username"/>
+            <input type="password" placeholder="password"/>
+            <button>login</button>
+            <p class="message">Not registered? <span>Create an account</span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.message span').click(function(){
+            $('.register-form').animate({height: "toggle", opacity: "toggle"}, "slow");
+            $('.login-form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
+
+        $("button").click(function(){
+            console.log("click a button");
+            var name1 = $('#un1').val();
+            var name2 = $('#un2').val();
+
+            if(name1 !== '')
+                localStorage.setItem('user', name1);
+            if(name2 !== '')
+                localStorage.setItem('user', name2);
+
+            window.location.href = "menu.html";
+        });
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Profile | Children with Cancer Journey</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css"  />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<!--topbar-->
+<div class="top-bar">
+    <div class="top-bar-title">Children with Cancer Journey</div>
+</div>
+
+
+<!--results-->
+<img class='profile-img' src="http://i.imgur.com/JK7W2Qo.png" >
+<h1 class="profile-name">Ross</h1>
+<br>
+<div class="profile-tag-box">
+    <div class="tag-box profile-tag">Doctor</div>
+    <div class="location-box profile-tag">Edinburgh</div>
+</div>
+
+<div class="search-form-container">
+    <div class="search-form">
+        <label>Name</label>
+        <input type="text" id="search-string" name="search-string" placeholder="Search name..">
+
+        <label>Tag</label>
+        <select id="tag" name="tag">
+            <option value="">No Tag Selected</option>
+            <option value="patient">Patient</option>
+            <option value="parent">Parent</option>
+            <option value="doctor">Doctor</option>
+        </select>
+
+        <label>Location</label>
+        <select id="location" name="location">
+            <option value="">No Location Selected</option>
+            <option value="glasgow">Glasgow</option>
+            <option value="edinburgh">Edinburgh</option>
+        </select>
+
+        <button id="search-button">Update Profile</button>
+    </div>
+</div>
+</body>
+</html>
