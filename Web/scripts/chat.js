@@ -1,4 +1,4 @@
-var selfChatString = '<li class="self"><div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div><div class="msg"><p>191919</p><time>20:18</time></div></li>'
+var selfChatString = '<li class="self"><div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div><div class="msg"><p>191919</p><time>a few secs ago</time></div></li>'
 function chatInsert(message) {
     return selfChatString.replace('191919',message).replace(':o','<emoji class="scream"/>');
 }
@@ -20,8 +20,8 @@ $(document).ready(function(){
             $(document).scrollTop($(document).height());
 
             var postUrl = 'https://us-central1-code4good-kidswithcancer.cloudfunctions.net/api/texttogroup/';
-            var trackingJSON = '{ "sender": "'+'Doflamingo'+'”, “sendto": "'+localStorage.getItem("currentRoom")+'”, “message": "'+text+'"}';
-
+            var trackingJSON = '{ "sender": "'+'Doflamingo'+'", "sendto": "'+localStorage.getItem("currentRoom")+'", "message": "'+text+'"}';
+            console.log(trackingJSON);
             // var trackingJSON = '{ "sender": "Doflamingo”, “sendto": "BoyScount”, “message": "Did you know that GEICO can save you 15% or more on your car insurance?"}';
             // var trackingJSON = '{"roomid": "'+ localStorage.getItem("currentRoom").toString() +'"}';
             // var postUrl =  "https://us-central1-code4good-kidswithcancer.cloudfunctions.net/api/gettextfromgroup/";
@@ -34,6 +34,7 @@ $(document).ready(function(){
                 beforeSend: function() { return; },
                 complete: function() { return; },
                 success: function(data) {
+                    console.log("message sent");
                 },
 
                 error: function(data) { console.log("error: 39381") },
@@ -68,11 +69,14 @@ $(document).ready(function(){
                     return;
 
                 $('.chat').empty();
+                data.texts = data.texts.filter((a)=>!$.isEmptyObject(a));
+                data.texts = data.texts.sort((a)=>a.id);
+
                 for(var i = 0 ; i < data.texts.length ; i++)
                 {
                     var text = data.texts[i];
-                    if($.isEmptyObject( text ))
-                        continue;
+                    // if($.isEmptyObject( text ))
+                    //     continue;
                     var newElement = $.parseHTML(chatInsert(text.message));
                     $('.chat').append(newElement);
                 }
@@ -81,7 +85,7 @@ $(document).ready(function(){
             error: function(data) { console.log("error: 39381") },
             dataType: 'json'
         });
-    }, 5000);
+    }, 3000);
 });
 
 
