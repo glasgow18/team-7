@@ -33,24 +33,27 @@ app.post('/filterusers', (req,res) => {
             var tabname = String(childSnapshot.val().name);
             var tablocation = String(childSnapshot.val().location);
 
+            if(tag == childSnapshot.val().tag || tag.length == 0)
+            {
+                if((childSnapshot.val().age > min_age || min_age == -1) && (childSnapshot.val().age < max_age || max_age == -1))
+                    if (tabname.length >= name.length || name.length == 0) {
+                        var length = name.length;
+                        if (name == tabname.slice(0, length) || name.length == 0) {
 
-            if (tabname.length >= name.length) {
-                var length = name.length;
-                if (name == tabname.slice(0, length)) {
+                            if (tablocation.length >= location.length || location.length == 0) {
+                                length = location.length;
+                                if (location == tablocation.slice(0, length) || location.length == 0) {
 
-                    if (tablocation.length >= location.length) {
-                        length = location.length;
-                        if (location == tablocation.slice(0, length)) {
-
-                            var user = {}
-                            user["name"] = childSnapshot.val().name;
-                            user["location"] = childSnapshot.val().location;
-                            user["age"] = childSnapshot.val().age;
-                            user["tag"] = childSnapshot.val().tag;
-                            result[uuidv4()] = user;
+                                    var user = {}
+                                    user["name"] = childSnapshot.val().name;
+                                    user["location"] = childSnapshot.val().location;
+                                    user["age"] = childSnapshot.val().age;
+                                    user["tag"] = childSnapshot.val().tag;
+                                    result[uuidv4()] = user;
+                                }
+                            }
                         }
                     }
-                }
             }
 
         })
@@ -108,7 +111,7 @@ app.post('/texttogroup', (req,res) => {
     textref.child("textcount").once('value').then(function (snapshot) {
         if(snapshot.val() != undefined)
         {
-            textcount = snapshot;
+            textcount = parseInt(snapshot.val());
         }
     }).then(function (){
         textcount += 1;
