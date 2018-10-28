@@ -55,7 +55,7 @@ function fetch(){
 
             $('.chat').empty();
             data.texts = data.texts.filter((a)=>!$.isEmptyObject(a));
-            data.texts = data.texts.sort((a)=> parseInt(a.id));
+            data.texts = data.texts.sort((a)=> parseInt(a.id) * -1);
 
             for(var i = 0 ; i < data.texts.length ; i++)
             {
