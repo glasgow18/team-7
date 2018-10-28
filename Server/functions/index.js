@@ -77,7 +77,7 @@ app.post('/getstar', (req,res) => {
     var db = admin.database();
     var starsref = db.ref().child('Stars').child(name)
 
-    var result = {}
+    var result = []
 
     starsref.once('value').then(function(snapshot) {
         if(snapshot != undefined)
@@ -87,12 +87,73 @@ app.post('/getstar', (req,res) => {
                 user["id"] = childSnapshot.val().id;
                 user["name"] = childSnapshot.val().name;
                 user["number"] = childSnapshot.val().number;
-                result[user["id"]] = user;
+                result.push(user);
             })
         }
     }).then(function(){
         res.status(200).json(result);
     })
 })
+
+app.post('/texttogroup', (req,res) => {
+    var sender = String(req.body.sender);
+    var sendto = String(req.body.sendto);
+    var message = String(req.body.message);
+
+    var db = admin.database();
+    var textref = db.ref().child('Texts').child(sendto)
+
+    var textcount = 0;
+
+    textref.child("textcount").once('value').then(function (snapshot) {
+        if(snapshot.val() != undefined)
+        {
+            textcount = snapshot;
+        }
+    }).then(function (){
+        textcount += 1;
+        textref.child("textcount").set(textcount);
+        var newtext = {};
+        newtext["sender"] = sender;
+        newtext["message"] = message;
+        newtext["id"] = textcount;
+        textref.child(textcount).set(newtext);
+    }).then(function ()
+    {
+        res.status(200).json({"result":"Successful"});
+    });
+});
+
+app.post('/gettextfromgroup', (req,res) => {
+    var roomid = req.body.roomid;
+
+    var db = admin.database();
+    var textref = db.ref().child('Texts').child(roomid)
+
+    var result = []
+
+    var roomname = ""
+
+
+    textref.once('value').then(function(snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+            var text = {}
+            text["sender"] = childSnapshot.val().sender
+            text["message"] = childSnapshot.val().message
+            text["id"] = childSnapshot.val().id;
+
+            result.push(text);
+        })
+    }).then(function(){
+        db = admin.database();
+        textref = db.ref().child('IDCollection').child(roomid)
+        textref.once("value").then(function (roomn) {
+            roomname = roomn.val();
+        }).then(function(){
+            res.status(200).json({"roomname": roomname,"texts": result});
+        })
+    });
+})
+
 
 exports.api = functions.https.onRequest(app);
